@@ -16,8 +16,8 @@ public class DiceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Value = Random.Range(1, 6); //sets the integer variable behind the number on the dice to a random of 1-6
-        Color = Random.Range(1, 6); //same as above, but for the variable behind the color on the dice
+        Value = Random.Range(0, 5); //sets the integer variable behind the number on the dice to a random of 0-5
+        Color = Random.Range(0, 5); //same as above, but for the variable behind the color on the dice
 
         spriteRender = GetComponent<SpriteRenderer>(); //grabs the sprite renderer for the container object: in this case, the Dice object
 

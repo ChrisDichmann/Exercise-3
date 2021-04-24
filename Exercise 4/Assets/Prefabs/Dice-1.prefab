@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 259857979906769735}
   - component: {fileID: 6007411767641399711}
   - component: {fileID: 7593013092653415632}
+  - component: {fileID: 6148829429356108946}
   m_Layer: 0
   m_Name: Dice-1
   m_TagString: Untagged
@@ -110,3 +111,29 @@ MonoBehaviour:
   - {r: 0.65307796, g: 0.5330188, b: 1, a: 1}
   Value: 0
   Color: 0
+--- !u!61 &6148829429356108946
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958469448102310650}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.09, y: 2.09}
+    newSize: {x: 2.09, y: 2.09}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.09, y: 2.09}
+  m_EdgeRadius: 0

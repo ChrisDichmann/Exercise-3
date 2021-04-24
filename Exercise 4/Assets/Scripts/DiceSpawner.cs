@@ -16,7 +16,7 @@ public class DiceSpawner : MonoBehaviour
     {
         Camera camera = GetComponent<Camera>();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0)); //screenBounds now holds the relative positional information for the screen of the game
-        fiveChunk = (screenBounds.x / 2); //fiveChunk, the main variable that splits up the placement of the dice, is set to 1/5 of the screen
+        fiveChunk = (screenBounds.x / 3); //fiveChunk, the main variable that splits up the placement of the dice, is set to 1/5 of the screen
         positionX = -2 * fiveChunk; //position variable is set to fiveChunk
         positionY = screenBounds.y;
         transform.position = new Vector2(positionX, positionY); //x position of the spawner object is SHOCKINGLY given to position x

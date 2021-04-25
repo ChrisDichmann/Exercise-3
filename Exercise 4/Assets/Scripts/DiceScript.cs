@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class DiceScript : MonoBehaviour
 {
+    public Sprite[] sprites; //an array that holds 6 sprites for Dice to randomly select on Initialization
+    public Color[] colors; //an array that holds 6 color values for Dice to randomly select on Initialization
 
-    public Sprite[] sprites;
-    public Color[] colors;
+    public int Value; //the variable that determines which line of the sprites array the Die picks
+    public int Color; //the variable for the above, but for color values
 
-    public int Value;
-    public int Color;
-
-    private bool Switch;
-
-    public GameObject heldDice;
-
-    private SpriteRenderer spriteRender;
+    private SpriteRenderer spriteRender; //grabs the sprite renderer of the object in order to alter its appearance at will
 
     // Start is called before the first frame update
     void Start()
     {
-        Switch = false;
-
-        Value = Random.Range(0, 5); //sets the integer variable behind the number on the dice to a random of 0-5
-        Color = Random.Range(0, 5); //same as above, but for the variable behind the color on the dice
+        Value = Random.Range(0, 6); //sets the integer variable behind the number on the dice to a random of 0-5
+        Color = Random.Range(0, 6); //same as above, but for the variable behind the color on the dice
 
         spriteRender = GetComponent<SpriteRenderer>(); //grabs the sprite renderer for the container object: in this case, the Dice object
 
@@ -31,47 +24,11 @@ public class DiceScript : MonoBehaviour
         spriteRender.color = colors[Color]; //same as above for color: these are dual systems.
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (transform.position.y < 0) //code for the Dice to differentiate between top and bottom row: a simple, janky fix, but one that works. Dividing rows by having Dice beneath y=0 get a special tag
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
-
-            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider != null)
-            {
-                if (Switch == false)
-                {
-                    hit.transform.position = new Vector3(0f, -3.5f, 0f);
-                    Switch = true;
-                }
-
-                else if (Switch == true)
-                {
-                    float clickedValue = hit.transform.GetComponent<DiceScript>().Value;
-                    Debug.Log(clickedValue);
-                    GameObject heldDice = GameObject.FindGameObjectWithTag("Held");
-                    float heldValue = heldDice.GetComponent<DiceScript>().Value;
-
-                    if (heldValue != 5 && clickedValue == (heldValue - 1))
-                    {
-
-                    }
-
-                    else if (heldValue == 5 && clickedValue == 0)
-                    {
-
-                    }
-
-                    else if (heldDice.layer == 2)
-                    {
-                        hit.transform.position = heldDice.transform.position;
-                        Destroy(heldDice);
-                    }
-                }
-            }
+            transform.gameObject.tag = "Bottom"; //gives Dice on the bottom row the tag "Bottom," allowing them to be interacted with
         }
     }
 }
